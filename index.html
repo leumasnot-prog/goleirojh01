@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jhonatan | Goleiro Profissional</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Sora:wght@300;400;600;800&family=Syne:wght@700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --accent-red: #dc2626;
+      --bg-deep: #000000;
+      --charcoal: #121212;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      background-color: var(--bg-deep);
+      color: #FFFFFF;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Classes de Fontes Customizadas */
+    .font-display {
+      font-family: 'Syne', sans-serif;
+      letter-spacing: -0.04em;
+    }
+
+    .font-tech {
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .font-body {
+      font-family: 'Sora', sans-serif;
+    }
+
+    /* Carbon Fiber / Technical Mesh Texture - hidden on mobile for performance */
+    .bg-texture {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-color: var(--bg-deep);
+      background-image:
+        radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+      opacity: 0.5;
+    }
+
+    .bg-carbon {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+        linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0,
+        linear-gradient(27deg, #222 5px, transparent 5px) 0 10px,
+        linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+        linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+        linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+      background-color: #131313;
+      background-size: 20px 20px;
+      opacity: 0.2;
+    }
+
+    /* Light Leak Effects - simplified on mobile */
+    .light-leak {
+      position: fixed;
+      width: 60vw;
+      height: 60vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .leak-1 {
+      top: -10%;
+      left: -10%;
+      animation: pulse 8s infinite alternate;
+    }
+
+    .leak-2 {
+      bottom: -10%;
+      right: -10%;
+      animation: pulse 10s infinite alternate-reverse;
+    }
+
+    @keyframes pulse {
+      from {
+        transform: scale(1);
+        opacity: 0.4;
+      }
+
+      to {
+        transform: scale(1.2);
+        opacity: 0.7;
+      }
+    }
+
+    /* Floating Particles - hidden on mobile for performance */
+    .particle {
+      position: fixed;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.3;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.6;
+      }
+
+      90% {
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: translateY(-100vh) translateX(20px);
+        opacity: 0;
+      }
+    }
+
+    .text-glow {
+      text-shadow: 0 0 30px rgba(220, 38, 38, 0.4);
+    }
+
+    /* Mapeamento de classes antigas para as novas fontes para evitar quebras */
+    .font-oswald {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #000000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-red);
+    }
+
+    /* Mobile Performance Optimizations */
+    @media (max-width: 768px) {
+
+      .bg-texture,
+      .bg-carbon {
+        display: none;
+      }
+
+      .light-leak {
+        width: 40vw;
+        height: 40vw;
+        filter: blur(60px);
+      }
+
+      .particle {
+        display: none;
+      }
+
+      .text-glow {
+        text-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+      }
+
+      /* Improve touch targets */
+      button,
+      a {
+        min-height: 44px;
+      }
+
+      /* Reduce motion for performance */
+      * {
+        animation-duration: 0.3s !important;
+      }
+    }
+
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
